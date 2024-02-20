@@ -11,6 +11,7 @@ python = "^3.11"
 streamlit = "^1.31.1"
 pandas = "^2.2.0"
 halo = "^0.0.31"
+python-dotenv = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]

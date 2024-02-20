@@ -28,11 +28,11 @@ run: ## Start the Crypto Coin Trading UI server
 	$(info ******** Running the Crypto Coin Trading UI ********)
 	@bash -c "python -m poetry run streamlit run ${project}/${entrypoint}"
 
-##@ Section 3: Kubernetes Environment Commands
+##\@ Section 3: Kubernetes Environment Commands
 
-##@ Section 4: Dockerfile Build Commands
+##\@ Section 4: Dockerfile Build Commands
 
-##@ Section 5: Documentation
+##\@ Section 5: Documentation
 
 ### Help Section
 help:
