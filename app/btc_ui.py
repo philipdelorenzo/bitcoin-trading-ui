@@ -112,15 +112,21 @@ with sec3:
 
 ######## Let's calculate the owned coins in USD ########
 for coin in current_invested_symbols:
+    coin_transact = [i for i in order_history if i["currency_code"] == coin]
+    last_transaction = coin_transact[-1]
+    cash = ph_data["crypto_buying_power"]["amount"]
     purchased_price = last_transaction["price"]
     current_price = quote_data[coin]["mark_price"]
     percentage_change = '{:,.2f}'.format((float(current_price) - float(purchased_price)) / float(purchased_price) * 100)
 
+    print(f"Sending calcluation request for coin: {coin}, purchased_price: {'${:,.2f}'.format(float(purchased_price))}, current_price: {'${:,.2f}'.format(float(current_price))}, percentage_change: {percentage_change}")
     _params = {
         "symbol": coin,
+        "cash": cash,
+        "number_of_investments": len(current_invested_symbols),
         "purchased_price": purchased_price,
         "current_price": current_price,
         "percentage_change": percentage_change
         }
+    
     results = requests.post(f"{config.api_url}/markets/calculate", headers=config.headers, params=_params).json()
-    print(results)
