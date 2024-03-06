@@ -4,9 +4,19 @@ import streamlit as st
 import pandas as pd
 
 from config import Config
+from st_pages import Page, show_pages, add_page_title
 
 config = Config()
 st.set_page_config(layout="wide")
+
+# This is the sidebar configuration
+show_pages(
+    [
+        Page("app/btc_ui.py", "Home"),
+        Page("app/pages/headlines.py", "Headlines"),
+        Page("app/pages/transactions.py", "Transactions"),
+    ]
+)
 
 # Let"s get the data from the API - Phoenix
 with st.spinner("Retrieving data from Robinhood..."):
